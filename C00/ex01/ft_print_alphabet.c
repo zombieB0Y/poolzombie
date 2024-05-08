@@ -2,5 +2,12 @@
 
 void	ft_print_alphabet(void)
 {
-	write(1, abcdefghijklmnopqrstuvwxyz, 26);
+	char c[] = "abcdefghijklmnopqrstuvwxyz";
+	write(1, &c, 26);
+}
+/*#include<stdio.h>
+int main()
+{
+	ft_print_alphabet();
+	return 0;
 }
