@@ -7,7 +7,22 @@ void	ft_print_alphabet(void)
 	c[] = "abcdefghijklmnopqrstuvwxyz";
 	write(1, &c, 26);
 }
-/*#include<stdio.h>
+/*void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+void	ft_print_alphabet(void)
+{
+	char	alphabet;
+
+	alphabet = 'a';
+	while(alphabet <= 'z')
+	{
+		ft_putchar(alphabet);
+		alphabet++;
+	}
+}
+#include<stdio.h>
 int main()
 {
 	ft_print_alphabet();
