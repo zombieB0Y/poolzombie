@@ -1,42 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_numeric.c                                :+:      :+:    :+:   */
+/*   ft_str_is_uppercase.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zm <marvin@42.fr>                          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/18 17:37:55 by zm                #+#    #+#             */
-/*   Updated: 2024/05/19 18:01:05 by zm               ###   ########.fr       */
+/*   Created: 2024/05/19 18:14:35 by zm                #+#    #+#             */
+/*   Updated: 2024/05/19 18:28:37 by zm               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include <stdio.h>
 
-int	ft_str_is_numeric(char *str)
+int	ft_str_is_uppercase(char *str)
 {
 	int	i;
-	int	numeric;
+	int	upper;
 
 	i = 0;
-	numeric = 1;
+	upper = 1;
 	while (str[i] != '\0')
 	{
-		if (str[i] >= '0' && str[i] <= '9')
-		{
-			numeric = 1;
-		}
+		if (str[i] >= 'A' && str[i] <= 'Z')
+			upper = 1;
 		else
 		{
-			numeric = 0;
-			return (numeric);
+			upper = 0;
+			return (upper);
 		}
 		i++;
 	}
-	return (numeric);
+	return (upper);
 }
 /*int main()
 {
 	char str[] = "";
-	printf("%d\n", ft_str_is_numeric(str));
+	printf("%d\n", ft_str_is_uppercase(str));
 	return 0;
 }*/

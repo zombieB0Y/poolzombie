@@ -1,42 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_numeric.c                                :+:      :+:    :+:   */
+/*   ft_str_is_printable.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zm <marvin@42.fr>                          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/18 17:37:55 by zm                #+#    #+#             */
-/*   Updated: 2024/05/19 18:01:05 by zm               ###   ########.fr       */
+/*   Created: 2024/05/19 18:33:13 by zm                #+#    #+#             */
+/*   Updated: 2024/05/19 18:51:30 by zm               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include <stdio.h>
 
-int	ft_str_is_numeric(char *str)
+int	ft_str_is_printable(char *str)
 {
 	int	i;
-	int	numeric;
+	int	pri;
 
 	i = 0;
-	numeric = 1;
+	pri = 1;
 	while (str[i] != '\0')
 	{
-		if (str[i] >= '0' && str[i] <= '9')
-		{
-			numeric = 1;
-		}
+		if (str[i] >= 32 && str[i] <= 126)
+			pri = 1;
 		else
 		{
-			numeric = 0;
-			return (numeric);
+			pri = 0;
+			return (pri);
 		}
 		i++;
 	}
-	return (numeric);
+	return (pri);
 }
 /*int main()
 {
-	char str[] = "";
-	printf("%d\n", ft_str_is_numeric(str));
+	char pri[] = "v|{}  ";
+	printf("%d\n", ft_str_is_printable(pri));
 	return 0;
 }*/

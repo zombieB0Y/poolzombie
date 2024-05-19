@@ -1,42 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_numeric.c                                :+:      :+:    :+:   */
+/*   ft_str_is_lowercase.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zm <marvin@42.fr>                          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/18 17:37:55 by zm                #+#    #+#             */
-/*   Updated: 2024/05/19 18:01:05 by zm               ###   ########.fr       */
+/*   Created: 2024/05/19 18:01:58 by zm                #+#    #+#             */
+/*   Updated: 2024/05/19 18:13:02 by zm               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include <stdio.h>
 
-int	ft_str_is_numeric(char *str)
+int	ft_str_is_lowercase(char *str)
 {
 	int	i;
-	int	numeric;
+	int	cas;
 
 	i = 0;
-	numeric = 1;
+	cas = 1;
 	while (str[i] != '\0')
 	{
-		if (str[i] >= '0' && str[i] <= '9')
-		{
-			numeric = 1;
-		}
+		if (str[i] >= 'a' && str[i] <= 'z')
+			cas = 1;
 		else
 		{
-			numeric = 0;
-			return (numeric);
+			cas = 0;
+			return (cas);
 		}
 		i++;
 	}
-	return (numeric);
+	return (cas);
 }
 /*int main()
 {
-	char str[] = "";
-	printf("%d\n", ft_str_is_numeric(str));
+	char	str[] = "";
+	printf("%d\n", ft_str_is_lowercase(str));
 	return 0;
 }*/
