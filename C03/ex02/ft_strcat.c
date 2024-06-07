@@ -1,42 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zm <marvin@42.fr>                          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/06 17:08:54 by zm                #+#    #+#             */
-/*   Updated: 2024/06/06 18:52:23 by zm               ###   ########.fr       */
+/*   Created: 2024/06/07 17:30:46 by zm                #+#    #+#             */
+/*   Updated: 2024/06/07 17:58:26 by zm               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <stdio.h>
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
+char	*ft_strcat(char *dest, char *src)
 {
-	int	ret;
-	unsigned int	i;
+	int	i;
+	int	z;
 
 	i = 0;
-	ret = 0;
-	while ((s1[i] != '\0' || s2[i] != '\0') && i < n)
+	z = 0;
+	while (dest[i] !='\0')
 	{
-		if (s1[i] == s2[i])
-		{
-			ret = 0;
-		}
-		else
-		{
-			ret = s1[i] - s2[i];
-			return (ret);
-		}
 		i++;
 	}
-	return (ret);
+	while (src[z] !='\0')
+	{
+		dest[i] = src[z];
+		i++;
+		z++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }
-/*int main ()
+/*int main()
 {
-	char s1[] = "";
-	char s2[] = "123456789";
-	printf("  %d", ft_strncmp(s1,s2,7));
+	char s1[30] = "zoubair ";
+	char s2[] = "is up there!";
+	printf("%s", ft_strcat(s1,s2));
 	return 0;
 }*/
