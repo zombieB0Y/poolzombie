@@ -18,22 +18,6 @@ Here is a brief overview of the projects included in this repository:
 - **Description:** Introduction to the C programming language through a series of progressively challenging exercises.
 - **Key Concepts:** Variables, loops, conditionals, functions, pointers, arrays, and memory management.
 
-## Repository Structure
-
-.
-
-├── shell00/
-│ ├── ex00/
-│ ├── ex01/
-│ └── ...
-
-
-├── c_piscine/
-│ ├── day01/
-│ ├── day02/
-│ └── ...
-
-
 
 ## How to Use
 
