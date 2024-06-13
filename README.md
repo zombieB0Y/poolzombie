@@ -21,20 +21,15 @@ Here is a brief overview of the projects included in this repository:
 ## Repository Structure
 
 .
+
 ├── shell00/
-
 │ ├── ex00/
-
 │ ├── ex01/
-
 │ └── ...
 
 ├── c_piscine/
-
 │ ├── day01/
-
 │ ├── day02/
-
 │ └── ...
 
 
