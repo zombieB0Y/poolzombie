@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zm <marvin@42.fr>                          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/12 03:06:22 by zm                #+#    #+#             */
-/*   Updated: 2024/06/12 04:00:43 by zm               ###   ########.fr       */
+/*   Created: 2024/06/16 03:01:31 by zm                #+#    #+#             */
+/*   Updated: 2024/06/16 03:11:44 by zm               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -18,9 +18,19 @@ int	ft_checkspe(char c)
 	return (0);
 }
 
-int	ft_checkalph(char c)
+int	ft_checksign(char c)
 {
-	if (c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z')
+	if (c == '-' || c == '+')
+	{
+		if (c == '-')
+			return (1);
+		return (0);
+	}
+}
+
+int	ft_checknumbers(char c)
+{
+	if (c >= '0' && c <= '9')
 		return (1);
 	return (0);
 }
@@ -29,24 +39,27 @@ int	ft_atoi(char *str)
 {
 	int	sign;
 	int	result;
-	int	i;
 
 	sign = 1;
 	result = 0;
-	i = 0;
-	while (str[i] != '\0')
+	while (ft_checkspe(*str))
 	{
-		while (ft_checkspe(str[i]))
+		str++;
+	}
+	while (*str == '-' || *str == '+')
+	{
+		if (ft_checksign(*str))
 		{
-			i++;
-		}
-		if (ft_checkalph(str[i]))
-			return (result * sign);
-		if (str[i] == '-')
 			sign = -sign;
-		if (str[i] >= '0' && str[i] <= '9')
-			result = (result * 10) + (str[i] - '0');
-		i++;
+			str++;
+		}
+		else
+			str++;
+	}
+	while (ft_checknumbers(*str))
+	{
+		result = result * 10 + (*str - '0');
+		str++;
 	}
 	return (result * sign);
 }
