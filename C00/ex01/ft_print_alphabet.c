@@ -6,7 +6,7 @@
 /*   By: zm <marvin@42.fr>                          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 22:47:44 by zm                #+#    #+#             */
-/*   Updated: 2024/05/19 22:47:46 by zm               ###   ########.fr       */
+/*   Updated: 2024/06/19 11:44:38 by zm               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 
 void	ft_print_alphabet(void)
 {
-	char	c[];
-
-	c[] = "abcdefghijklmnopqrstuvwxyz";
-	write(1, &c, 26);
+	write(1, "abcdefghijklmnopqrstuvwxyz", 26);
 }
 /*void	ft_putchar(char c)
 {
