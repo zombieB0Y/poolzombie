@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zm <marvin@42.fr>                          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/19 00:35:09 by zm                #+#    #+#             */
-/*   Updated: 2024/06/19 00:46:26 by zm               ###   ########.fr       */
+/*   Created: 2024/06/19 11:11:44 by zm                #+#    #+#             */
+/*   Updated: 2024/06/19 11:14:41 by zm               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
@@ -18,55 +18,25 @@ void	ft_putchar(char c)
 
 void	print_base(long c, int count)
 {
-	char	*base_hex;
-	char	*base_bin;
-	char	*base_dec;
-	char	*base_oct;
+	char	*base;
 
-	base_hex = "0123456789ABCDEF";
-	base_bin = "01";
-	base_dec = "0123456789";
-	base_oct = "01234567";
 	if (count == 16)
+		base = "0123456789ABCDEF";
+	else if (count == 2)
+		base = "01";
+	else if (count == 10)
+		base = "0123456789";
+	else if (count == 8)
+		base = "01234567";
+	else
+		return ;
+	if (c >= count)
 	{
-		if (c > 15)
-		{
-			print_base(c / 16, count);
-			c = c % 16;
-		}
-		if (c < 16)
-			ft_putchar(base_hex[c]);
+		print_base(c / count, count);
+		c = c % count;
 	}
-	if (count == 2)
-	{
-		if (c > 1)
-		{
-			print_base(c / 2, count);
-			c = c % 2;
-		}
-		if (c < 2)
-			ft_putchar(base_bin[c]);
-	}
-	if (count == 10)
-	{
-		if (c > 9)
-		{
-			print_base(c / 10, count);
-			c = c % 10;
-		}
-		if (c < 10)
-			ft_putchar(base_dec[c]);
-	}
-	if (count == 8)
-	{
-		if (c > 7)
-		{
-			print_base(c / 8, count);
-			c = c % 8;
-		}
-		if (c < 8)
-			ft_putchar(base_oct[c]);
-	}
+	if (c < count)
+		ft_putchar(base[c]);
 }
 
 int	check_cond(char *base)
@@ -97,8 +67,8 @@ int	check_cond(char *base)
 
 void	ft_putnbr_base(int nbr, char *base)
 {
-		long nb;
-		long i;
+	long	nb;
+	long	i;
 
 	if (check_cond(base))
 	{
@@ -125,7 +95,6 @@ void	ft_putnbr_base(int nbr, char *base)
 }
 /*int main()
 {
-	int i = 122;
-	char base[] = " 0";
-	ft_putnbr_base(i,base);
+	ft_putnbr_base(122,"01");
+	return 0;
 }*/
