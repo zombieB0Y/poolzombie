@@ -1,1 +1,1 @@
-find . -name "*.sh" | tr -d ".sh"
+find . -type f -name "*.sh" -exec basename {} .sh \; 
