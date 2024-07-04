@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zm <marvin@42.fr>                          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/19 11:11:44 by zm                #+#    #+#             */
-/*   Updated: 2024/06/19 11:14:41 by zm               ###   ########.fr       */
+/*   Created: 2024/07/04 10:43:41 by zm                #+#    #+#             */
+/*   Updated: 2024/07/04 10:45:58 by zm               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <unistd.h>
 
 void	ft_putchar(char c)
@@ -16,47 +17,34 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-void	print_base(long c, int count)
+int	ft_strlen(char *str)
 {
-	char	*base;
+	int	i;
 
-	if (count == 16)
-		base = "0123456789ABCDEF";
-	else if (count == 2)
-		base = "01";
-	else if (count == 10)
-		base = "0123456789";
-	else if (count == 8)
-		base = "01234567";
-	else
-		return ;
-	if (c >= count)
-	{
-		print_base(c / count, count);
-		c = c % count;
-	}
-	if (c < count)
-		ft_putchar(base[c]);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
 
-int	check_cond(char *base)
+int	checkerror(char *str)
 {
 	int	i;
 	int	j;
+	int	x;
 
+	x = ft_strlen(str);
 	i = 0;
-	j = i + 1;
-	if (base[0] == '\0' && base[1] == '\0')
+	if (str[0] == '\0' || x == 1)
 		return (0);
-	while (base[i] != '\0')
+	while (str[i] != '\0')
 	{
-		if (base[i] == '-' || base[i] == '+')
+		if (str[i] <= 32 || str[i] == 127 || str[i] == 43 || str[i] == 45)
 			return (0);
-		if (base[i] < ' ' || base[i] > '~')
-			return (0);
-		while (base[j] != '\0')
+		j = i + 1;
+		while (j < ft_strlen(str))
 		{
-			if (base[i] == base[j])
+			if (str[i] == str[j])
 				return (0);
 			j++;
 		}
@@ -67,34 +55,31 @@ int	check_cond(char *base)
 
 void	ft_putnbr_base(int nbr, char *base)
 {
+	int		len;
+	int		error;
 	long	nb;
-	long	i;
 
-	if (check_cond(base))
+	error = checkerror(base);
+	len = ft_strlen(base);
+	nb = nbr;
+	if (error == 1)
 	{
-		nb = nbr;
-		i = 0;
 		if (nb < 0)
 		{
 			ft_putchar('-');
-			nb = -nb;
+			nb *= -1;
 		}
-		while (base[i] != '\0')
+		if (nb < len)
+			ft_putchar(base[nb]);
+		if (nb >= len)
 		{
-			i++;
+			ft_putnbr_base(nb / len, base);
+			ft_putnbr_base(nb % len, base);
 		}
-		if (i == 16)
-			print_base(nb, i);
-		if (i == 2)
-			print_base(nb, i);
-		if (i == 10)
-			print_base(nb, i);
-		if (i == 8)
-			print_base(nb, i);
 	}
 }
 /*int main()
 {
-	ft_putnbr_base(122,"01");
+	ft_putnbr_base(458,"./");
 	return 0;
 }*/
