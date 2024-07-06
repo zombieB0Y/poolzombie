@@ -6,7 +6,7 @@
 /*   By: zm <marvin@42.fr>                          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 10:43:41 by zm                #+#    #+#             */
-/*   Updated: 2024/07/04 10:45:58 by zm               ###   ########.fr       */
+/*   Updated: 2024/07/06 15:45:38 by zm               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	checkerror(char *str)
 		return (0);
 	while (str[i] != '\0')
 	{
-		if (str[i] <= 32 || str[i] == 127 || str[i] == 43 || str[i] == 45)
+		if (str[i] < 32 || str[i] == 127 || str[i] == 43 || str[i] == 45)
 			return (0);
 		j = i + 1;
 		while (j < ft_strlen(str))
@@ -80,6 +80,6 @@ void	ft_putnbr_base(int nbr, char *base)
 }
 /*int main()
 {
-	ft_putnbr_base(458,"./");
+	ft_putnbr_base(458,"01");
 	return 0;
 }*/
