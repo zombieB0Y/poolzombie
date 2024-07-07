@@ -5,66 +5,39 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zm <marvin@42.fr>                          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/16 03:01:31 by zm                #+#    #+#             */
-/*   Updated: 2024/06/16 03:11:44 by zm               ###   ########.fr       */
+/*   Created: 2024/07/07 21:24:23 by zm                #+#    #+#             */
+/*   Updated: 2024/07/07 21:38:27 by zm               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
-
-int	ft_checkspe(char c)
-{
-	if (c == ' ' || c == '\t' || c == '\n' || c == '\f' || c == '\r')
-		return (1);
-	return (0);
-}
-
-int	ft_checksign(char c)
-{
-	if (c == '-' || c == '+')
-	{
-		if (c == '-')
-			return (1);
-		return (0);
-	}
-}
-
-int	ft_checknumbers(char c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
 
 int	ft_atoi(char *str)
 {
+	int	i;
 	int	sign;
 	int	result;
 
+	i = 0;
 	sign = 1;
 	result = 0;
-	while (ft_checkspe(*str))
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	while (str[i] == '-' || str[i] == '+')
 	{
-		str++;
+		if (str[i] == '-')
+			sign *= -1;
+		i++;
 	}
-	while (*str == '-' || *str == '+')
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		if (ft_checksign(*str))
-		{
-			sign = -sign;
-			str++;
-		}
-		else
-			str++;
-	}
-	while (ft_checknumbers(*str))
-	{
-		result = result * 10 + (*str - '0');
-		str++;
+		result *= 10;
+		result = result + str[i] - 48;
+		i++;
 	}
 	return (result * sign);
 }
-/*int main(int ac, char **av)
+/*#include<stdio.h>
+int main()
 {
-	printf("%d", ft_atoi(av[1]));
+	printf("%d\n",ft_atoi("			\f-+++4244"));
 	return 0;
 }*/
